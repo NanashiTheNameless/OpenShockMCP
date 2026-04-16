@@ -63,7 +63,7 @@ require_confirmation = false
             self.assertEqual(config.server.path, "/mcp")
             self.assertTrue(config.server.json_response)
             self.assertEqual(config.openshock.api_key, "secret")
-            self.assertEqual(config.openshock.user_agent, "OpenShockMCP/0.0.0.2")
+            self.assertEqual(config.openshock.user_agent, "OpenShockMCP/0.0.0.3")
             self.assertEqual(config.openshock.max_intensity, 20)
             self.assertFalse(config.openshock.require_confirmation)
 
