@@ -1,6 +1,6 @@
 [project]
 name = "openshock-mcp"
-version = "0.0.0.1"
+version = "0.0.0.2"
 description = "Loopback-only MCP server for OpenShock"
 readme = "README.md"
 requires-python = ">=3.10"

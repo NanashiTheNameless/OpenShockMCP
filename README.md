@@ -82,7 +82,7 @@ pipx install openshock-mcp
 Install a specific tag or commit:
 
 ```bash
-pipx install "git+https://github.com/NanashiTheNameless/OpenShockMCP.git@v0.0.0.1"
+pipx install "git+https://github.com/NanashiTheNameless/OpenShockMCP.git@v0.0.0.2"
 ```
 
 For local development from a checkout:
@@ -100,7 +100,7 @@ openshock-mcp --version
 Expected version:
 
 ```text
-0.0.0.1
+0.0.0.2
 ```
 
 ## First Run And Config Creation
@@ -244,7 +244,7 @@ http://127.0.0.1:8765/mcp
 On startup, the server prints sanitized startup info to stderr:
 
 ```text
-openshock-mcp 0.0.0.1 starting
+openshock-mcp 0.0.0.2 starting
 transport: streamable-http
 mcp endpoint: http://127.0.0.1:8765/mcp
 config: /path/to/config.toml
