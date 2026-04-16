@@ -1,0 +1,16 @@
+[server]
+transport = "stdio"
+host = "127.0.0.1"
+port = 8000
+path = "/mcp"
+json_response = false
+
+[openshock]
+api_key = "your-api-key"
+base_url = "https://api.openshock.app"
+timeout = 15
+
+[safety]
+max_intensity = 100
+max_duration_ms = 65535
+require_confirmation = true
