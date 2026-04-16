@@ -38,7 +38,7 @@ Short version: tool execute command. Consequences belong to operator.
 1. Install:
 
 ```bash
-pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@main'
+pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@master'
 ```
 
 2. First run with your API key to generate config and start the server:
@@ -70,7 +70,7 @@ Nanashi-OpenShockPY>=0.0.1.7
 Install from GitHub (default):
 
 ```bash
-pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@main'
+pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@master'
 ```
 
 Also available on PyPI:
@@ -82,7 +82,7 @@ pipx install openshock-mcp
 Install a specific tag or commit:
 
 ```bash
-pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@0.0.0.3'
+pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@0.0.0.4'
 ```
 
 For local development from a checkout:
@@ -100,7 +100,7 @@ openshock-mcp --version
 Expected version:
 
 ```text
-0.0.0.3
+0.0.0.4
 ```
 
 ## First Run And Config Creation
@@ -244,7 +244,7 @@ http://127.0.0.1:8765/mcp
 On startup, the server prints sanitized startup info to stderr:
 
 ```text
-openshock-mcp 0.0.0.3 starting
+openshock-mcp 0.0.0.4 starting
 transport: streamable-http
 mcp endpoint: http://127.0.0.1:8765/mcp
 config: /path/to/config.toml
