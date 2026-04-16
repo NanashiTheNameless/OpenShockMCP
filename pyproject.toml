@@ -4,13 +4,12 @@ version = "0.0.0.2"
 description = "Loopback-only MCP server for OpenShock"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "PolyForm Noncommercial License 1.0.0" }
+license = "PolyForm-Noncommercial-1.0.0"
 
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Natural Language :: English",
-    "License :: Other/Proprietary License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -35,7 +34,7 @@ maintainers = [
 
 dependencies = [
     "mcp>=1.27.0",
-    "Nanashi-OpenShockPY @ git+https://github.com/NanashiTheNameless/OpenShockPY.git@main",
+    "Nanashi-OpenShockPY>=0.0.1.7",
     "tomli>=2.0.1; python_version < '3.11'",
 ]
 

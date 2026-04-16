@@ -55,14 +55,14 @@ If you prefer the full setup details, continue below.
 
 - Python 3.10 or newer
 - `pipx`
-- `git`, because OpenShockPY installs from GitHub `main`
+- `git` (required if you install this project from a GitHub URL)
 - An OpenShock API key
 
 Dependencies:
 
 ```text
 mcp>=1.27.0
-Nanashi-OpenShockPY @ git+https://github.com/NanashiTheNameless/OpenShockPY.git@main
+Nanashi-OpenShockPY>=0.0.1.7
 ```
 
 ## Installation

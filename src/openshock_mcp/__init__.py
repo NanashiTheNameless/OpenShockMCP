@@ -11,8 +11,10 @@ except ModuleNotFoundError:  # pragma: no cover - Python 3.10 fallback
 	import tomli as tomllib  # type: ignore[no-redef]
 
 
-def _version_from_pyproject() -> str:
+def _version_from_pyproject() -> str | None:
 	pyproject_path = Path(__file__).resolve().parents[2] / "pyproject.toml"
+	if not pyproject_path.exists():
+		return None
 	with pyproject_path.open("rb") as file:
 		data = tomllib.load(file)
 	project = data.get("project", {})
@@ -22,7 +24,11 @@ def _version_from_pyproject() -> str:
 	return value.strip()
 
 
-try:
-	__version__ = version("openshock-mcp")
-except PackageNotFoundError:  # pragma: no cover - local source checkout fallback
-	__version__ = _version_from_pyproject()
+_pyproject_version = _version_from_pyproject()
+if _pyproject_version is not None:
+	__version__ = _pyproject_version
+else:
+	try:
+		__version__ = version("openshock-mcp")
+	except PackageNotFoundError as exc:  # pragma: no cover - unexpected runtime state
+		raise RuntimeError("could not determine package version") from exc
