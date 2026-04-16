@@ -70,7 +70,7 @@ Nanashi-OpenShockPY>=0.0.1.7
 Install from GitHub (default):
 
 ```bash
-pipx install git+https://github.com/NanashiTheNameless/OpenShockMCP.git@main
+pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@main'
 ```
 
 Also available on PyPI:
@@ -82,7 +82,7 @@ pipx install openshock-mcp
 Install a specific tag or commit:
 
 ```bash
-pipx install "git+https://github.com/NanashiTheNameless/OpenShockMCP.git@v0.0.0.2"
+pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@0.0.0.2'
 ```
 
 For local development from a checkout:
