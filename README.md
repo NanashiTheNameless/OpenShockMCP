@@ -62,8 +62,7 @@ Dependencies:
 
 ```text
 mcp>=1.27.0
-Nanashi-OpenShockPY>=0.0.1.7
-```
+Nanashi-OpenShockPY>=0.0.2.0
 
 ## Installation
 
@@ -82,7 +81,7 @@ pipx install openshock-mcp
 Install a specific tag or commit:
 
 ```bash
-pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@0.0.0.4'
+pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@0.0.1.0'
 ```
 
 For local development from a checkout:
@@ -100,7 +99,7 @@ openshock-mcp --version
 Expected version:
 
 ```text
-0.0.0.4
+0.0.1.0
 ```
 
 ## First Run And Config Creation
@@ -244,7 +243,7 @@ http://127.0.0.1:8765/mcp
 On startup, the server prints sanitized startup info to stderr:
 
 ```text
-openshock-mcp 0.0.0.4 starting
+openshock-mcp 0.0.1.0 starting
 transport: streamable-http
 mcp endpoint: http://127.0.0.1:8765/mcp
 config: /path/to/config.toml
