@@ -25,10 +25,10 @@ def main(argv: list[str] | None = None) -> int:
     try:
         auto_config = auto_configure(args.config)
         if auto_config.created:
-            print(f"openshock-mcp: created config file: {auto_config.path}", file=sys.stderr)
+            print(f"nanashi-openshock-mcp: created config file: {auto_config.path}", file=sys.stderr)
             if not auto_config.ready:
                 print(
-                    "openshock-mcp: edit openshock.api_key in that file, then run again",
+                    "nanashi-openshock-mcp: edit openshock.api_key in that file, then run again",
                     file=sys.stderr,
                 )
                 return 2
@@ -58,7 +58,7 @@ def main(argv: list[str] | None = None) -> int:
             json_response=json_response,
         )
     except ConfigError as exc:
-        print(f"openshock-mcp: {exc}", file=sys.stderr)
+        print(f"nanashi-openshock-mcp: {exc}", file=sys.stderr)
         return 2
 
     _print_startup_info(
@@ -82,7 +82,7 @@ def main(argv: list[str] | None = None) -> int:
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="openshock-mcp",
+        prog="nanashi-openshock-mcp",
         description="Loopback-only MCP server for OpenShock.",
     )
     parser.add_argument(
@@ -110,7 +110,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--config",
         default=None,
-        help="Path to config TOML. Defaults to openshock-mcp.toml or user config dir.",
+        help="Path to config TOML. Defaults to nanashi-openshock-mcp.toml or user config dir.",
     )
     parser.add_argument(
         "--json-response",
@@ -132,13 +132,13 @@ def _stdio_is_interactive() -> bool:
 def _print_stdio_terminal_help(config_path: str | None) -> None:
     config_hint = f" --config {config_path}" if config_path else ""
     print(
-        "openshock-mcp is configured for stdio MCP transport.\n"
+        "nanashi-openshock-mcp is configured for stdio MCP transport.\n"
         "Stdio mode is launched by an MCP client and expects JSON-RPC on stdin.\n"
         "Do not run it interactively in a terminal.\n\n"
         "Use one of these instead:\n"
-        f"  - Add command to your MCP client: openshock-mcp{config_hint}\n"
-        f"  - Run local HTTP mode: openshock-mcp --transport http{config_hint}\n"
-        "  - Show version: openshock-mcp --version",
+        f"  - Add command to your MCP client: nanashi-openshock-mcp{config_hint}\n"
+        f"  - Run local HTTP mode: nanashi-openshock-mcp --transport http{config_hint}\n"
+        "  - Show version: nanashi-openshock-mcp --version",
         file=sys.stderr,
     )
 
@@ -163,7 +163,7 @@ def _print_startup_info(
     print(
         "\n".join(
             [
-                f"openshock-mcp {__version__} starting",
+                f"nanashi-openshock-mcp {__version__} starting",
                 f"transport: {transport}",
                 f"mcp endpoint: {endpoint}",
                 f"config: {config_path or 'none'}",

@@ -1,9 +1,9 @@
-# OpenShock MCP
+# Nanashi OpenShock MCP
 
-[![PyPI - Version](https://img.shields.io/pypi/v/openshock-mcp)](https://pypi.org/project/openshock-mcp/)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/openshock-mcp)](https://pypi.org/project/openshock-mcp/)
-[![PyPI - Implementation](https://img.shields.io/pypi/implementation/openshock-mcp)](https://pypi.org/project/openshock-mcp/)
-[![PyPI - Types](https://img.shields.io/pypi/types/openshock-mcp)](https://pypi.org/project/openshock-mcp/)
+[![PyPI - Version](https://img.shields.io/pypi/v/nanashi-openshock-mcp)](https://pypi.org/project/nanashi-openshock-mcp/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nanashi-openshock-mcp)](https://pypi.org/project/nanashi-openshock-mcp/)
+[![PyPI - Implementation](https://img.shields.io/pypi/implementation/nanashi-openshock-mcp)](https://pypi.org/project/nanashi-openshock-mcp/)
+[![PyPI - Types](https://img.shields.io/pypi/types/nanashi-openshock-mcp)](https://pypi.org/project/nanashi-openshock-mcp/)
 
 [![Tests](https://github.com/NanashiTheNameless/OpenShockMCP/workflows/Test/badge.svg)](https://github.com/NanashiTheNameless/OpenShockMCP/actions/workflows/test.yml)
 
@@ -44,10 +44,10 @@ pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git
 2. First run with your API key to generate config and start the server:
 
 ```bash
-OPENSHOCK_API_KEY="your-api-key" openshock-mcp
+OPENSHOCK_API_KEY="your-api-key" nanashi-openshock-mcp
 ```
 
-3. Point your MCP client to `openshock-mcp` (stdio is the default and recommended transport).
+3. Point your MCP client to `nanashi-openshock-mcp` (stdio is the default and recommended transport).
 
 If you prefer the full setup details, continue below.
 
@@ -75,13 +75,13 @@ pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git
 Also available on PyPI:
 
 ```bash
-pipx install openshock-mcp
+pipx install nanashi-openshock-mcp
 ```
 
 Install a specific tag or commit:
 
 ```bash
-pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@0.0.1.0'
+pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@0.0.1.1'
 ```
 
 For local development from a checkout:
@@ -93,32 +93,32 @@ pipx install --editable /path/to/OpenShockMCP
 Check install:
 
 ```bash
-openshock-mcp --version
+nanashi-openshock-mcp --version
 ```
 
 Expected version:
 
 ```text
-0.0.1.0
+0.0.1.1
 ```
 
 ## First Run And Config Creation
 
-The server uses a TOML config file. If no config exists, `openshock-mcp` creates
+The server uses a TOML config file. If no config exists, `nanashi-openshock-mcp` creates
 one automatically in the normal per-user config directory for your OS:
 
 ```text
-Windows: %APPDATA%\openshock-mcp\config.toml
-macOS:   ~/Library/Application Support/openshock-mcp/config.toml
-Linux:   ~/.config/openshock-mcp/config.toml
-Other:   ~/.config/openshock-mcp/config.toml
+Windows: %APPDATA%\nanashi-openshock-mcp\config.toml
+macOS:   ~/Library/Application Support/nanashi-openshock-mcp/config.toml
+Linux:   ~/.config/nanashi-openshock-mcp/config.toml
+Other:   ~/.config/nanashi-openshock-mcp/config.toml
 ```
 
 If `OPENSHOCK_API_KEY` is set during first run, the generated config includes it
 and the server starts:
 
 ```bash
-OPENSHOCK_API_KEY="your-api-key" openshock-mcp
+OPENSHOCK_API_KEY="your-api-key" nanashi-openshock-mcp
 ```
 
 If no API key is available, the server creates a template config and exits. Edit
@@ -155,11 +155,11 @@ Config lookup order:
 
 1. `--config /path/to/config.toml`
 2. `$OPENSHOCK_MCP_CONFIG`
-3. `./openshock-mcp.toml`
+3. `./nanashi-openshock-mcp.toml`
 4. OS user config path
 
-On Unix-like systems, `$XDG_CONFIG_HOME/openshock-mcp/config.toml` is used before
-`~/.config/openshock-mcp/config.toml` when `XDG_CONFIG_HOME` is set.
+On Unix-like systems, `$XDG_CONFIG_HOME/nanashi-openshock-mcp/config.toml` is used before
+`~/.config/nanashi-openshock-mcp/config.toml` when `XDG_CONFIG_HOME` is set.
 
 ### Environment Variable Overrides
 
@@ -182,8 +182,8 @@ OPENSHOCK_MCP_JSON_RESPONSE
 OPENSHOCK_MCP_CONFIG
 ```
 
-`openshock-mcp.toml` is ignored by git so local secrets do not get committed.
-`openshock-mcp.example.toml` is a safe template.
+`nanashi-openshock-mcp.toml` is ignored by git so local secrets do not get committed.
+`nanashi-openshock-mcp.example.toml` is a safe template.
 
 ## Running The Server
 
@@ -193,19 +193,19 @@ OPENSHOCK_MCP_CONFIG
 does not open a network port.
 
 Do not use `stdio` as an interactive terminal program. MCP clients launch it and
-send JSON-RPC over stdin. If you run `openshock-mcp` directly in a terminal, it
+send JSON-RPC over stdin. If you run `nanashi-openshock-mcp` directly in a terminal, it
 prints usage guidance instead of starting the protocol stream.
 
 With explicit config:
 
 ```bash
-openshock-mcp --config ~/.config/openshock-mcp/config.toml
+nanashi-openshock-mcp --config ~/.config/nanashi-openshock-mcp/config.toml
 ```
 
 On Windows PowerShell, pass a Windows path:
 
 ```powershell
-openshock-mcp --config "$env:APPDATA\openshock-mcp\config.toml"
+nanashi-openshock-mcp --config "$env:APPDATA\nanashi-openshock-mcp\config.toml"
 ```
 
 Claude Desktop style config:
@@ -214,8 +214,8 @@ Claude Desktop style config:
 {
   "mcpServers": {
     "openshock": {
-      "command": "openshock-mcp",
-      "args": ["--config", "/home/YOUR_USER/.config/openshock-mcp/config.toml"]
+      "command": "nanashi-openshock-mcp",
+      "args": ["--config", "/home/YOUR_USER/.config/nanashi-openshock-mcp/config.toml"]
     }
   }
 }
@@ -227,11 +227,11 @@ Use streamable HTTP only when your MCP client needs an HTTP MCP endpoint. The
 server refuses non-loopback hosts such as `0.0.0.0` and LAN IP addresses.
 
 ```bash
-openshock-mcp \
+nanashi-openshock-mcp \
   --transport streamable-http \
   --host 127.0.0.1 \
   --port 8765 \
-  --config ~/.config/openshock-mcp/config.toml
+  --config ~/.config/nanashi-openshock-mcp/config.toml
 ```
 
 MCP endpoint:
@@ -243,7 +243,7 @@ http://127.0.0.1:8765/mcp
 On startup, the server prints sanitized startup info to stderr:
 
 ```text
-openshock-mcp 0.0.1.0 starting
+nanashi-openshock-mcp 0.0.1.1 starting
 transport: streamable-http
 mcp endpoint: http://127.0.0.1:8765/mcp
 config: /path/to/config.toml
@@ -256,13 +256,13 @@ Stdio startup info also goes to stderr so stdout stays reserved for MCP JSON-RPC
 This is allowed:
 
 ```bash
-openshock-mcp --transport http --host 127.0.0.1
+nanashi-openshock-mcp --transport http --host 127.0.0.1
 ```
 
 This is rejected:
 
 ```bash
-openshock-mcp --transport http --host 0.0.0.0
+nanashi-openshock-mcp --transport http --host 0.0.0.0
 ```
 
 ## Tools

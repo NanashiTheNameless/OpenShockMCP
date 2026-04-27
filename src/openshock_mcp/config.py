@@ -83,7 +83,7 @@ def auto_configure(path: str | os.PathLike[str] | None = None) -> AutoConfigResu
     if path is not None or _env_path():
         return AutoConfigResult(path=None, created=False, ready=True)
 
-    local_path = Path.cwd() / "openshock-mcp.toml"
+    local_path = Path.cwd() / "nanashi-openshock-mcp.toml"
     if local_path.exists():
         return AutoConfigResult(path=local_path, created=False, ready=True)
 
@@ -188,19 +188,25 @@ def load_app_config(path: str | os.PathLike[str] | None = None) -> AppConfig:
 def default_config_path() -> Path:
     config_home = os.environ.get("XDG_CONFIG_HOME")
     if config_home and config_home.strip():
-        return Path(config_home).expanduser() / "openshock-mcp" / "config.toml"
+        return Path(config_home).expanduser() / "nanashi-openshock-mcp" / "config.toml"
 
     system = platform.system()
     if system == "Windows":
         appdata = os.environ.get("APPDATA")
         if appdata and appdata.strip():
-            return Path(appdata).expanduser() / "openshock-mcp" / "config.toml"
-        return Path.home() / "AppData" / "Roaming" / "openshock-mcp" / "config.toml"
+            return Path(appdata).expanduser() / "nanashi-openshock-mcp" / "config.toml"
+        return Path.home() / "AppData" / "Roaming" / "nanashi-openshock-mcp" / "config.toml"
 
     if system == "Darwin":
-        return Path.home() / "Library" / "Application Support" / "openshock-mcp" / "config.toml"
+        return (
+            Path.home()
+            / "Library"
+            / "Application Support"
+            / "nanashi-openshock-mcp"
+            / "config.toml"
+        )
 
-    return Path.home() / ".config" / "openshock-mcp" / "config.toml"
+    return Path.home() / ".config" / "nanashi-openshock-mcp" / "config.toml"
 
 
 def resolve_config_path(path: str | os.PathLike[str] | None = None) -> Path | None:
@@ -211,7 +217,7 @@ def resolve_config_path(path: str | os.PathLike[str] | None = None) -> Path | No
     if env_path:
         return Path(env_path).expanduser()
 
-    local_path = Path.cwd() / "openshock-mcp.toml"
+    local_path = Path.cwd() / "nanashi-openshock-mcp.toml"
     if local_path.exists():
         return local_path
     return default_config_path()

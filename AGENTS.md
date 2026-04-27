@@ -6,7 +6,7 @@ Guide for coding agents working in this repository.
 
 - Repository: OpenShockMCP
 - Language: Python (>=3.10)
-- Package entrypoint: `openshock-mcp` -> `openshock_mcp.cli:main`
+- Package entrypoint: `nanashi-openshock-mcp` -> `openshock_mcp.cli:main`
 - Primary source directory: `src/openshock_mcp/`
 - Tests directory: `tests/`
 

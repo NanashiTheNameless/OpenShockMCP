@@ -3,6 +3,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
+from openshock_mcp import __version__
 from openshock_mcp.config import (
     ConfigError,
     auto_configure,
@@ -63,7 +64,7 @@ require_confirmation = false
             self.assertEqual(config.server.path, "/mcp")
             self.assertTrue(config.server.json_response)
             self.assertEqual(config.openshock.api_key, "secret")
-            self.assertEqual(config.openshock.user_agent, "OpenShockMCP/0.0.1.0")
+            self.assertEqual(config.openshock.user_agent, f"OpenShockMCP/{__version__}")
             self.assertEqual(config.openshock.max_intensity, 20)
             self.assertFalse(config.openshock.require_confirmation)
 
@@ -108,7 +109,7 @@ require_confirmation = false
                 with patch("openshock_mcp.config.platform.system", return_value="Windows"):
                     path = default_config_path()
 
-            self.assertEqual(path, appdata / "openshock-mcp" / "config.toml")
+            self.assertEqual(path, appdata / "nanashi-openshock-mcp" / "config.toml")
 
     def test_default_config_path_uses_macos_application_support(self):
         with TemporaryDirectory() as tmp:
@@ -120,7 +121,11 @@ require_confirmation = false
 
             self.assertEqual(
                 path,
-                home / "Library" / "Application Support" / "openshock-mcp" / "config.toml",
+                home
+                / "Library"
+                / "Application Support"
+                / "nanashi-openshock-mcp"
+                / "config.toml",
             )
 
 

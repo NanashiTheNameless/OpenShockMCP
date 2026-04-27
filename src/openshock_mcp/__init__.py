@@ -29,6 +29,6 @@ if _pyproject_version is not None:
 	__version__ = _pyproject_version
 else:
 	try:
-		__version__ = version("openshock-mcp")
+		__version__ = version("nanashi-openshock-mcp")
 	except PackageNotFoundError as exc:  # pragma: no cover - unexpected runtime state
 		raise RuntimeError("could not determine package version") from exc
