@@ -1,9 +1,9 @@
 # Nanashi OpenShock MCP
 
-[![PyPI - Version](https://img.shields.io/pypi/v/nanashi-openshock-mcp)](https://pypi.org/project/nanashi-openshock-mcp/)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nanashi-openshock-mcp)](https://pypi.org/project/nanashi-openshock-mcp/)
-[![PyPI - Implementation](https://img.shields.io/pypi/implementation/nanashi-openshock-mcp)](https://pypi.org/project/nanashi-openshock-mcp/)
-[![PyPI - Types](https://img.shields.io/pypi/types/nanashi-openshock-mcp)](https://pypi.org/project/nanashi-openshock-mcp/)
+[![PyPI - Version](https://img.shields.io/pypi/v/Nanashi-OpenShock-MCP)](https://pypi.org/project/Nanashi-OpenShock-MCP/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Nanashi-OpenShock-MCP)](https://pypi.org/project/Nanashi-OpenShock-MCP/)
+[![PyPI - Implementation](https://img.shields.io/pypi/implementation/Nanashi-OpenShock-MCP)](https://pypi.org/project/Nanashi-OpenShock-MCP/)
+[![PyPI - Types](https://img.shields.io/pypi/types/Nanashi-OpenShock-MCP)](https://pypi.org/project/Nanashi-OpenShock-MCP/)
 
 [![Tests](https://github.com/NanashiTheNameless/OpenShockMCP/workflows/Test/badge.svg)](https://github.com/NanashiTheNameless/OpenShockMCP/actions/workflows/test.yml)
 
