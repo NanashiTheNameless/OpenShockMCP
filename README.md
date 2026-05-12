@@ -63,6 +63,7 @@ Dependencies:
 ```text
 mcp>=1.27.0
 Nanashi-OpenShockPY>=0.0.2.0
+```
 
 ## Installation
 
