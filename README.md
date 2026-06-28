@@ -334,4 +334,4 @@ Install `git`. OpenShockPY is installed from GitHub `main`.
 
 ## License
 
-PolyForm Noncommercial License 1.0.0. See [LICENSE.md](LICENSE.md).
+PolyForm Noncommercial License 1.0.0. See [LICENSE.md](https://github.com/NanashiTheNameless/OpenShockMCP/blob/master/LICENSE.md).
