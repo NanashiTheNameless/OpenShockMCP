@@ -1,6 +1,6 @@
 [project]
 name = "Nanashi-OpenShock-MCP"
-version = "0.0.1.4"
+version = "0.0.1.5"
 description = "Loopback-only MCP server for OpenShock"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -34,7 +34,7 @@ maintainers = [
 
 dependencies = [
     "mcp>=1.27.0",
-    "Nanashi-OpenShockPY>=0.0.2.0",
+    "Nanashi-OpenShockPY>=0.0.2.1",
     "tomli>=2.0.1; python_version < '3.11'",
 ]
 
