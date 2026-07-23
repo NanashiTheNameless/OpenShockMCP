@@ -62,7 +62,7 @@ Dependencies:
 
 ```text
 mcp>=1.27.0
-Nanashi-OpenShockPY>=0.0.2.0
+Nanashi-OpenShockPY>=0.1.0.0
 ```
 
 ## Installation
@@ -82,7 +82,7 @@ pipx install nanashi-openshock-mcp
 Install a specific tag or commit:
 
 ```bash
-pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@0.0.1.1'
+pipx install --force 'git+https://github.com/NanashiTheNameless/OpenShockMCP.git@0.0.1.6'
 ```
 
 For local development from a checkout:
@@ -100,7 +100,7 @@ nanashi-openshock-mcp --version
 Expected version:
 
 ```text
-0.0.1.1
+0.0.1.6
 ```
 
 ## First Run And Config Creation
@@ -244,7 +244,7 @@ http://127.0.0.1:8765/mcp
 On startup, the server prints sanitized startup info to stderr:
 
 ```text
-nanashi-openshock-mcp 0.0.1.1 starting
+nanashi-openshock-mcp 0.0.1.6 starting
 transport: streamable-http
 mcp endpoint: http://127.0.0.1:8765/mcp
 config: /path/to/config.toml
@@ -274,6 +274,9 @@ Read-only tools:
 - `list_devices`: list OpenShock devices.
 - `get_device`: get one device by ID.
 - `list_shockers`: list shockers, optionally filtered by device ID.
+- `list_own_shockers`: list owned hubs with their shockers.
+- `list_shared_shockers`: list shockers shared with this account.
+- `list_shocker_shares`: list users one shocker is shared with.
 - `get_shocker`: get one shocker by ID.
 
 Action tools:

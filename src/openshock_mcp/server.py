@@ -6,11 +6,7 @@ from typing import Any, Literal
 
 from mcp.server.fastmcp import FastMCP
 from OpenShockPY import OpenShockClient
-
-try:
-    from OpenShockPY import OpenShockPYError as OpenShockLibraryError
-except ImportError:
-    from OpenShockPY import OpenShockError as OpenShockLibraryError
+from OpenShockPY import OpenShockPYError as OpenShockLibraryError
 
 from .config import (
     ConfigError,
@@ -66,6 +62,24 @@ def build_server(
         """List OpenShock shockers, optionally only for one device ID."""
         with _client(load_config(config_path)) as client:
             return _ok(client.list_shockers(device_id=device_id))
+
+    @mcp.tool()
+    def list_own_shockers() -> dict[str, Any]:
+        """List owned OpenShock hubs with their shockers."""
+        with _client(load_config(config_path)) as client:
+            return _ok(client.list_own_shockers())
+
+    @mcp.tool()
+    def list_shared_shockers() -> dict[str, Any]:
+        """List OpenShock shockers shared with the configured account."""
+        with _client(load_config(config_path)) as client:
+            return _ok(client.list_shared_shockers())
+
+    @mcp.tool()
+    def list_shocker_shares(shocker_id: str) -> dict[str, Any]:
+        """List users one OpenShock shocker is shared with."""
+        with _client(load_config(config_path)) as client:
+            return _ok(client.list_shocker_shares(shocker_id))
 
     @mcp.tool()
     def get_shocker(shocker_id: str) -> dict[str, Any]:
@@ -137,13 +151,7 @@ def _client(config: OpenShockConfig) -> Iterator[OpenShockClient]:
     except OpenShockLibraryError as exc:
         raise ConfigError(str(exc)) from exc
     finally:
-        close = getattr(client, "close", None)
-        if callable(close):
-            close()
-        else:
-            session = getattr(client, "_session", None)
-            if session is not None:
-                session.close()
+        client.close()
 
 
 def _control(
@@ -156,17 +164,7 @@ def _control(
 ) -> dict[str, Any]:
     with _client(config) as client:
         if shocker_id.lower() == "all":
-            send_all = getattr(client, "send_action_all", None)
-            if callable(send_all):
-                response = send_all(control_type, intensity, duration, exclusive)
-            else:
-                shocker_ids = _list_shocker_ids(client)
-                if not shocker_ids:
-                    raise ConfigError("no shockers found")
-                response = [
-                    client.send_action(shocker, control_type, intensity, duration, exclusive)
-                    for shocker in shocker_ids
-                ]
+            response = client.send_action_all(control_type, intensity, duration, exclusive)
         else:
             response = client.send_action(shocker_id, control_type, intensity, duration, exclusive)
     return _ok(
@@ -183,40 +181,3 @@ def _ok(response: Any, **extra: Any) -> dict[str, Any]:
     payload = {"ok": True, "response": response}
     payload.update(extra)
     return payload
-
-
-def _list_shocker_ids(client: OpenShockClient) -> list[str]:
-    return _extract_shocker_ids(client.list_shockers())
-
-
-def _extract_shocker_ids(payload: Any) -> list[str]:
-    seen: set[str] = set()
-    shocker_ids: list[str] = []
-
-    def add(value: Any) -> None:
-        if isinstance(value, str) and value not in seen:
-            seen.add(value)
-            shocker_ids.append(value)
-
-    def visit(value: Any) -> None:
-        if isinstance(value, dict):
-            shockers = value.get("shockers")
-            if isinstance(shockers, list):
-                for shocker in shockers:
-                    visit(shocker)
-                return
-            add(value.get("id"))
-            return
-        if isinstance(value, list):
-            for item in value:
-                visit(item)
-
-    if isinstance(payload, dict):
-        if "data" in payload:
-            visit(payload["data"])
-        if "shockers" in payload:
-            visit(payload["shockers"])
-    else:
-        visit(payload)
-
-    return shocker_ids
